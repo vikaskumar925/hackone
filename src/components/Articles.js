@@ -20,12 +20,12 @@ class Articles extends React.Component {
     fetch(url)
       .then(res => res.json())
       .then(response => {
-        let articles = response.data.filter(item => {
-          return item.title != null;
-        });
         if(response.total) {
           articles = articles.slice(0, 4);
         }
+        articles = articles.filter(item => {
+          return item.title != null;
+        });
         this.setState({ articles : articles, click:true});
       })
       .catch(err=> {
