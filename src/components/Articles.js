@@ -11,7 +11,11 @@ class Articles extends React.Component {
     this.setState({input: value});
   }
   onFetchHandler =  (event) => {
+    if(!this.state.input) {
+      return;
+    }
     this.setState({click: true});
+    
     const input = this.state.input;
     let url = 'https://jsonmock.hackerrank.com/api/articles?author='+input+'&page=1';
     fetch(url)
