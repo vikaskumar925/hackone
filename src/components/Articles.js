@@ -14,7 +14,6 @@ class Articles extends React.Component {
     if(!this.state.input) {
       return;
     }
-    this.setState({click: true});
     
     const input = this.state.input;
     let url = 'https://jsonmock.hackerrank.com/api/articles?author='+input+'&page=1';
@@ -23,10 +22,11 @@ class Articles extends React.Component {
       .then(response => {
         if(response.total) {
           let articles = response.data.slice(0, 4);
-          this.setState({ articles : articles});
+          this.setState({ articles : articles, click:true});
         }
       })
       .catch(err=> {
+        this.setState({click: true, articles:[]});
         console.log(err.message)
       })
 
