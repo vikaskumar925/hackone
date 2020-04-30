@@ -20,6 +20,7 @@ class Articles extends React.Component {
     fetch(url)
       .then(res => res.json())
       .then(response => {
+        let articles = response.data;
         if(response.total) {
           articles = articles.slice(0, 4);
         }
